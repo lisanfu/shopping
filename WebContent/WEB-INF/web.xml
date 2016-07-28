@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <servlet>
+    <servlet-name>Admin_LoginServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.Admin_LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>addAdminServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.AddAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateAdminServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.UpdateAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>deleteAdminServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.DeleteAdminServlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>addNewsServlet</servlet-name>
+  <servlet-class>com.ay.shopping.servlet.AddNewsServlet</servlet-class>
+  </servlet>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet-mapping>
+  <servlet-name>addNewsServlet</servlet-name>
+  <url-pattern>/addNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteAdminServlet</servlet-name>
+    <url-pattern>/deleteAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>updateAdminServlet</servlet-name>
+    <url-pattern>/updateAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Admin_LoginServlet</servlet-name>
+    <url-pattern>/Admin_LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addAdminServlet</servlet-name>
+    <url-pattern>/addAdminServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
