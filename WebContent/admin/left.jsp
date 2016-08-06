@@ -10,13 +10,13 @@
 	/*功能菜单折叠*/
 	function displayNav(id){
 		var nav = document.getElementById("nav" + id);
-		if(nav.style.height == "30px")
+		if(nav.style.height == "50px")
 			{
 				nav.style.height="";
 				
 			}else
 			{
-				nav.style.height="30px"	
+				nav.style.height="50px"	
 			}
 	}
 </script>
@@ -50,7 +50,7 @@
 		<div id="nav3" class="nav">
 			<dl>
 				<dt onclick="displayNav(3)">新闻管理</dt>
-				<dd><a href="">新闻列表</a></dd>
+				<dd><a href="newslist.jsp" target="mainFrame">新闻列表</a></dd>
 				<dd><a href="addnews.jsp" target="mainFrame">添加新闻</a></dd>
 			</dl>
 		</div>

@@ -17,25 +17,33 @@
     <servlet-class>com.ay.shopping.servlet.DeleteAdminServlet</servlet-class>
   </servlet>
   <servlet>
-  <servlet-name>addNewsServlet</servlet-name>
-  <servlet-class>com.ay.shopping.servlet.AddNewsServlet</servlet-class>
+    <servlet-name>addNewsServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.AddNewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>deleteNewsServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.DeleteNewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>updateNewsServlet</servlet-name>
+    <servlet-class>com.ay.shopping.servlet.UpdateNewsServlet</servlet-class>
   </servlet>
   
   
   
   
   
-  
-  
-  
-  
-  
-  
-  
-  
   <servlet-mapping>
-  <servlet-name>addNewsServlet</servlet-name>
-  <url-pattern>/addNewsServlet</url-pattern>
+    <servlet-name>updateNewsServlet</servlet-name>
+    <url-pattern>/updateNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteNewsServlet</servlet-name>
+    <url-pattern>/deleteNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>addNewsServlet</servlet-name>
+    <url-pattern>/addNewsServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>deleteAdminServlet</servlet-name>

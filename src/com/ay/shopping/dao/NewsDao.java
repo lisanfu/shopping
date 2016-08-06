@@ -91,9 +91,11 @@ public class NewsDao {
 		Connection conn = ConnDB.getConn();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select Top " + pageSize +
+		/*String sql = "select Top " + pageSize +
 				"* from newsinfo where newsid not in(select Top(" +
 				pageSize + " *(" +pageNow +"- 1)) newsid from newsinfo";
+				*/
+		String sql = "select * from newsinfo where newsId not in(select newsid from (select * from newsinfo limit "+pageSize*(pageNow-1)+" )as foo ) limit "+pageSize;
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
@@ -119,5 +121,82 @@ public class NewsDao {
 		}
 		
 		return newsList;
+	}
+	/**根据ID查询新闻的方法
+	 * @param newsId
+	 * @return
+	 */
+	public NewsInfo updateNews(int newsId)
+	{
+		NewsInfo newsInfo = null;
+		Connection conn = ConnDB.getConn();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = "select * from newsinfo where newsId= "+newsId;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next())
+			{
+				newsInfo = new NewsInfo();
+				newsInfo.setNewsTitle(rs.getString("newsTitle"));
+				newsInfo.setNewsContent(rs.getString("newsContent"));
+				newsInfo.setNewsDate(rs.getString("newsDate"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		finally
+		{
+			ConnDB.close(rs, stmt, conn);
+		}
+		return newsInfo;
+	}
+	/**修改新闻资料的方法
+	 * @param newsInfo
+	 * @return
+	 */
+	public int updateNews(NewsInfo newsInfo) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		Connection conn  = ConnDB.getConn();
+		PreparedStatement stmt = null;
+		String sql = "update newsInfo set newsTitle=?,newsContent=?"+" where newsId=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, newsInfo.getNewsTitle());
+			stmt.setString(2, newsInfo.getNewsContent());
+			stmt.setInt(3, newsInfo.getNewsId());
+			res = stmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally
+		{
+			ConnDB.close(null, stmt, conn);
+		}
+		return res;
+	}
+	/**根据ID删除新闻记录
+	 * @param newsId
+	 * @return
+	 */
+	public int deleteNews(int newsId) {
+		// TODO Auto-generated method stub
+		int res = 0;
+		Connection conn = ConnDB.getConn();
+		PreparedStatement stmt = null;
+		String sql = "delete from newsinfo where newsId=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, newsId);
+			res = stmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
+		return res;
 	}
 }

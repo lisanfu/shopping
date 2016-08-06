@@ -26,7 +26,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/adminIndex.css" type="text/css" />
 </head>
+<script type="text/javascript">
+ function pageGo(){
+	 var pageNow = document.getElementById("pageNow");
+	 if(pageNow.value.length == 0)
+		 {
+		 alert("请输入要跳转的页数");
+		 pageNow.value = "";
+		 pageNow.focus();
+		 return ;
+		 }
+	 if(isNaN(pageNow.value))
+		 {
+		 alert("请输入正确的页数");
+		 pageNow.value="";
+		 pageNow.focus();
+		 return ;
+		 }
+	 window.location.href="newslist.jsp?pageNow="+pageNow.value;	 
+ }
+
+</script>
 <body>
 	<div id="container">
 		<div id="right">
@@ -52,7 +74,7 @@
 							<td><%=news.getNewsDate() %></td>
 							<td>
 							 <a href="updatenews.jsp?newsId=<%=news.getNewsId() %>"><img alt="编辑新闻" src="images/icon3.gif" /></a>
-							 	|<a href="../deleteNews?newsId=<%=news.getNewsId() %>" onclick="return confirm('确定要删除吗？')"><img alt="删除新闻" src="images/icon4.gif" /></a>
+							 	|<a href="../deleteNewsServlet?newsId=<%=news.getNewsId() %>" onclick="return confirm('确定要删除吗？')"><img alt="删除新闻" src="images/icon4.gif" /></a>
 							</td>
 						</tr>
 						<%} %>
